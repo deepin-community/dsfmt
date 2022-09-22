@@ -1,0 +1,5 @@
+autotools.patch
+array-size.patch
+extern-inline-functions.patch
+require-sse2-on-i386.patch
+require-altivec-on-power.patch

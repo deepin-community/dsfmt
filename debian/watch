@@ -1,0 +1,3 @@
+version=3
+opts="repack,compression=xz,dversionmangle=s/\+dfsg$//,repacksuffix=+dfsg" \
+http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/ dSFMT-src-(\d\S*).tar.gz

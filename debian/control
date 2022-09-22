@@ -1,0 +1,188 @@
+Source: dsfmt
+Priority: optional
+Maintainer: Debian Julia Team <pkg-julia-devel@lists.alioth.debian.org>
+Uploaders: Peter Colberg <peter@colberg.org>,
+           Graham Inggs <ginggs@debian.org>,
+           Mo Zhou <lumin@debian.org>,
+Build-Depends: debhelper-compat (= 13), autoconf-archive
+Standards-Version: 4.5.0
+Section: libs
+Homepage: http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/
+Vcs-Git: https://salsa.debian.org/julia-team/dsfmt.git
+Vcs-Browser: https://salsa.debian.org/julia-team/dsfmt
+
+Package: libdsfmt-521-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-521 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^521-1.
+
+Package: libdsfmt-1279-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-1279 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^1279-1.
+
+Package: libdsfmt-2203-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-2203 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^2203-1.
+
+Package: libdsfmt-4253-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-4253 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^4253-1.
+
+Package: libdsfmt-11213-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-11213 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^11213-1.
+
+Package: libdsfmt-19937-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-19937 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^19937-1.
+
+Package: libdsfmt-44497-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-44497 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^44497-1.
+
+Package: libdsfmt-86243-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-86243 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^86243-1.
+
+Package: libdsfmt-132049-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-132049 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^132049-1.
+
+Package: libdsfmt-216091-1
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: dSFMT-216091 pseudorandom number generator (shared library)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains a shared version of the library with period 2^216091-1.
+
+Package: libdsfmt-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends},
+ libdsfmt-521-1 (= ${binary:Version}),
+ libdsfmt-1279-1 (= ${binary:Version}),
+ libdsfmt-2203-1 (= ${binary:Version}),
+ libdsfmt-4253-1 (= ${binary:Version}),
+ libdsfmt-11213-1 (= ${binary:Version}),
+ libdsfmt-19937-1 (= ${binary:Version}),
+ libdsfmt-44497-1 (= ${binary:Version}),
+ libdsfmt-86243-1 (= ${binary:Version}),
+ libdsfmt-132049-1 (= ${binary:Version}),
+ libdsfmt-216091-1 (= ${binary:Version})
+Description: dSFMT pseudorandom number generator (development files)
+ The double-precision SIMD-oriented Fast Mersenne Twister (dSFMT) is a variant
+ of the Mersenne Twister pseudorandom number generator designed for modern CPUs
+ with multi-stage pipelining and SIMD instructions. dSFMT directly generates
+ IEEE 754 format double-precision floating-point pseudorandom numbers in the
+ ranges [1, 2), [0, 1), (0, 1] and (0, 1), and supports various periods from
+ 2^521-1 to 2^216091-1.
+ .
+ This package contains the development files needed to compile software using
+ dSFMT.

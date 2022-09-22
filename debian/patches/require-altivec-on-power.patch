@@ -1,0 +1,64 @@
+Description: Check whether Power CPU supports Altivec
+ This patch adds a run-time check for the Altivec extension by
+ querying the CPU features using getauxval(AT_HWCAP), which is
+ available since glibc 2.16.
+Author: Peter Colberg <peter@colberg.org>
+Forwarded: not-needed
+Last-Update: 2015-11-08
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/dSFMT.c
++++ b/dSFMT.c
+@@ -21,7 +21,9 @@
+ #include "dSFMT-params.h"
+ #include "dSFMT-common.h"
+ 
+-#if defined(HAVE_SSE2) && defined(__i386__)
++#if defined(HAVE_ALTIVEC)
++#  include <sys/auxv.h>
++#elif defined(HAVE_SSE2) && defined(__i386__)
+ #  include <cpuid.h>
+ #endif
+ 
+@@ -521,7 +523,12 @@ void dsfmt_fill_array_open_open(dsfmt_t
+     gen_rand_array_o0o1(dsfmt, (w128_t *)array, size / 2);
+ }
+ 
+-#if defined(HAVE_SSE2) && defined(__i386__)
++#if defined(HAVE_ALTIVEC)
++static int check_altivec() {
++    unsigned long aux = getauxval(AT_HWCAP);
++    return aux & PPC_FEATURE_HAS_ALTIVEC ? 1 : 0;
++}
++#elif defined(HAVE_SSE2) && defined(__i386__)
+ static int check_sse2() {
+     unsigned int eax = 0, ebx = 0, ecx = 0, edx = 0;
+     __get_cpuid(1, &eax, &ebx, &ecx, &edx);
+@@ -548,7 +555,12 @@ void dsfmt_chk_init_gen_rand(dsfmt_t *ds
+ 	fprintf(stderr, "DSFMT_MEXP doesn't match with dSFMT.c\n");
+ 	exit(1);
+     }
+-#if defined(HAVE_SSE2) && defined(__i386__)
++#if defined(HAVE_ALTIVEC)
++    if (!check_altivec()) {
++	fprintf(stderr, "dSFMT requires a processor with Altivec support\n");
++	exit(1);
++    }
++#elif defined(HAVE_SSE2) && defined(__i386__)
+     if (!check_sse2()) {
+ 	fprintf(stderr, "dSFMT requires a processor with SSE2 support\n");
+ 	exit(1);
+@@ -587,7 +599,12 @@ void dsfmt_chk_init_by_array(dsfmt_t *ds
+ 	fprintf(stderr, "DSFMT_MEXP doesn't match with dSFMT.c\n");
+ 	exit(1);
+     }
+-#if defined(HAVE_SSE2) && defined(__i386__)
++#if defined(HAVE_ALTIVEC)
++    if (!check_altivec()) {
++	fprintf(stderr, "dSFMT requires a processor with Altivec support\n");
++	exit(1);
++    }
++#elif defined(HAVE_SSE2) && defined(__i386__)
+     if (!check_sse2()) {
+ 	fprintf(stderr, "dSFMT requires a processor with SSE2 support\n");
+ 	exit(1);

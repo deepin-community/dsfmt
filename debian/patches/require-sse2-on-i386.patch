@@ -1,0 +1,64 @@
+Description: Check whether x86 CPU supports SSE2
+ This patch adds a run-time check for the SSE2 extension by querying
+ the CPU features using the x86 CPUID opcode. The wrapper function
+ __get_cpuid() is provided by GCC and Clang. See <cpuid.h> for the
+ list of supported CPU extension flags.
+Author: Peter Colberg <peter@colberg.org>
+Forwarded: not-needed
+Last-Update: 2015-10-28
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/dSFMT.c
++++ b/dSFMT.c
+@@ -21,6 +21,10 @@
+ #include "dSFMT-params.h"
+ #include "dSFMT-common.h"
+ 
++#if defined(HAVE_SSE2) && defined(__i386__)
++#  include <cpuid.h>
++#endif
++
+ #if defined(__cplusplus)
+ extern "C" {
+ #endif
+@@ -517,6 +521,14 @@ void dsfmt_fill_array_open_open(dsfmt_t *dsfmt, double array[], ptrdiff_t size)
+     gen_rand_array_o0o1(dsfmt, (w128_t *)array, size / 2);
+ }
+ 
++#if defined(HAVE_SSE2) && defined(__i386__)
++static int check_sse2() {
++    unsigned int eax = 0, ebx = 0, ecx = 0, edx = 0;
++    __get_cpuid(1, &eax, &ebx, &ecx, &edx);
++    return edx & bit_SSE2 ? 1 : 0;
++}
++#endif
++
+ #if defined(__INTEL_COMPILER)
+ #  pragma warning(disable:981)
+ #endif
+@@ -536,6 +548,12 @@ void dsfmt_chk_init_gen_rand(dsfmt_t *dsfmt, uint32_t seed, int mexp) {
+ 	fprintf(stderr, "DSFMT_MEXP doesn't match with dSFMT.c\n");
+ 	exit(1);
+     }
++#if defined(HAVE_SSE2) && defined(__i386__)
++    if (!check_sse2()) {
++	fprintf(stderr, "dSFMT requires a processor with SSE2 support\n");
++	exit(1);
++    }
++#endif
+     psfmt = &dsfmt->status[0].u32[0];
+     psfmt[idxof(0)] = seed;
+     for (i = 1; i < (DSFMT_N + 1) * 4; i++) {
+@@ -569,6 +587,12 @@ void dsfmt_chk_init_by_array(dsfmt_t *dsfmt, uint32_t init_key[],
+ 	fprintf(stderr, "DSFMT_MEXP doesn't match with dSFMT.c\n");
+ 	exit(1);
+     }
++#if defined(HAVE_SSE2) && defined(__i386__)
++    if (!check_sse2()) {
++	fprintf(stderr, "dSFMT requires a processor with SSE2 support\n");
++	exit(1);
++    }
++#endif
+     if (size >= 623) {
+ 	lag = 11;
+     } else if (size >= 68) {
